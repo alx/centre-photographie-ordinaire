@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article class="content series-single">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  {{ if .Params.images }}
+  <div class="scatter" data-seed="{{ printf "%.8s" (sha1 .File.ContentBaseName) }}">
+    {{ range .Params.images }}
+    <img src="{{ . }}" alt="" loading="lazy">
+    {{ end }}
+  </div>
+  {{ end }}
+</article>
+{{ end }}

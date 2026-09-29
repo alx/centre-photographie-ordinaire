@@ -1,0 +1,18 @@
+<header class="site-header">
+  <a href="/" class="logo-lien" aria-label="photographie ordinaire, retour à l'accueil">
+    {{ partial "logo.html" }}
+  </a>
+  <div class="header-titres">
+    <p class="site-titre">centre de la photographie ordinaire</p>
+    <p class="site-lieu">Simorre 32420</p>
+  </div>
+  <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" aria-label="navigation principale">
+    {{ range .Site.Menus.main }}
+    <a href="{{ .URL }}" {{ if $.IsAncestor .Page }}aria-current="page"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+  </nav>
+</header>
+<div class="barre-separation" role="separator"></div>

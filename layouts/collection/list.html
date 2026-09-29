@@ -1,0 +1,20 @@
+{{ define "main" }}
+<section class="content">
+  <h1>collection — le commun des mortels</h1>
+  {{ .Content }}
+  <div class="home-grid">
+    {{ $photos := index (hugo.Data) "photos" }}
+    {{ range $photos }}
+    <a class="tile" href="{{ .src }}" data-lightbox>
+      <span class="photo-cadre">
+        <img src="{{ .src }}" alt="{{ .alt }}" loading="lazy">
+      </span>
+    </a>
+    {{ end }}
+  </div>
+  <p class="series-cta">
+    <span class="titre-maj">les 400 thèmes</span> —
+    <a href="/series/">parcourir la collection par série</a>
+  </p>
+</section>
+{{ end }}

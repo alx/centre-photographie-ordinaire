@@ -1,0 +1,7 @@
+{{ define "main" }}
+<article class="content">
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.date }}<p class="byline">{{ .Format "2 janvier 2006" }}</p>{{ end }}
+  {{ .Content }}
+</article>
+{{ end }}

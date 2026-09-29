@@ -1,0 +1,12 @@
+{{ define "main" }}
+<section class="content series-index">
+  <h1>séries</h1>
+  {{ .Content }}
+  <p class="series-count">{{ len .RegularPages }} séries actuellement en ligne — la collection compte 400 thèmes, la liste s'approchera au fur et à mesure.</p>
+  <ul class="series-list">
+    {{ range .RegularPages.ByTitle }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

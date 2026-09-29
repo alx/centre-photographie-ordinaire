@@ -1,0 +1,50 @@
+baseURL = "/"
+locale = "fr-fr"
+defaultContentLanguage = "fr"
+title = "centre de la photographie ordinaire"
+enableRobotsTXT = true
+hasCJKLanguage = false
+
+[params]
+  description = "Le centre de la photographie ordinaire : 3 millions de photographies de famille, 400 thèmes. Collection, actualité, expositions, recherche et édition."
+  # Les polices DINdong / DIN 1451 fette Breitschrift 1936 sont propriétaires :
+  # elles sont utilisées si installées localement, sinon des substituts (voir main.css).
+  # Spectral est chargée depuis Google Fonts (licence OFL).
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+
+[[menu.main]]
+  name = "accueil"
+  page = "/"
+  weight = 10
+[[menu.main]]
+  name = "collection"
+  page = "/collection/"
+  weight = 20
+[[menu.main]]
+  name = "actualité"
+  page = "/actualite/"
+  weight = 30
+[[menu.main]]
+  name = "le centre"
+  page = "/le-centre/"
+  weight = 40
+[[menu.main]]
+  name = "soutenir"
+  page = "/soutenir/"
+  weight = 50
+[[menu.main]]
+  name = "boutique"
+  page = "/boutique/"
+  weight = 60
+[[menu.main]]
+  name = "contact"
+  page = "/contact/"
+  weight = 70

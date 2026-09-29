@@ -1,0 +1,46 @@
+{{ define "main" }}
+<section class="home-editorial">
+  <div class="home-grid-main">
+    <section class="home-texte" aria-label="présentation">
+      <p>Le Centre de la photographie ordinaire abrite la collection « le commun des mortels ».</p>
+      <p>3 000 000 de photographies amateurs et anonymes déploient un immense récit humain, du début de la photographie à nos jours.</p>
+      <p>Le classement en plus de 400 thèmes révèle l'histoire du regard et des pratiques photographiques populaires.</p>
+      <p>La collection sauvegarde ce patrimoine vernaculaire et œuvre à changer notre rapport aux photographies devenues anonymes.</p>
+      <p><a class="home-cta" href="/collection/">ouvrir la collection</a></p>
+    </section>
+    <figure class="home-image">
+      {{ $img := resources.Get "images/front.jpg" }}
+      {{ $webp := $img.Process "resize 1400x webp" | fingerprint }}
+      <img src="{{ $webp.RelPermalink }}"
+           alt="Photographie issue de la collection « le commun des mortels »"
+           width="{{ $webp.Width }}" height="{{ $webp.Height }}"
+           loading="eager">
+    </figure>
+  </div>
+
+  <aside class="bandeau" aria-label="bicentenaire de la photographie">
+    <div class="badges">
+      <svg class="badge" viewBox="0 0 120 120" role="img" aria-label="bicentenaire de la photographie 1826-2026">
+        <circle cx="60" cy="60" r="58" fill="#14171A" stroke="#F5EFE4" stroke-width="1"/>
+        <circle cx="60" cy="60" r="34" fill="none" stroke="#F5EFE4" stroke-width="0.75"/>
+        <defs>
+          <path id="badge-arc" d="M 60,60 m -44,0 a 44,44 0 1,1 88,0" fill="none"/>
+        </defs>
+        <text fill="#F5EFE4" font-family="Spectral, Georgia, serif" font-size="9.5" letter-spacing="1.5">
+          <textPath href="#badge-arc" startOffset="50%" text-anchor="middle">bicentenaire de la photographie</textPath>
+        </text>
+        <text x="60" y="58" text-anchor="middle" fill="#FAB617" font-family="Spectral, Georgia, serif" font-size="13">1826</text>
+        <text x="60" y="72" text-anchor="middle" fill="#FAB617" font-family="Spectral, Georgia, serif" font-size="13">2026</text>
+      </svg>
+    </div>
+    <p class="mention-bicentenaire">
+      De septembre 2026 à septembre 2027, les expositions et ateliers proposés sont
+      labellisés par le Ministère de la Culture dans le cadre du Bicentenaire de la Photographie.
+    </p>
+    <div class="logo-ministere" aria-label="ministère de la culture">
+      <!-- À REMPLACER : logo officiel du ministère de la Culture (fichier à fournir) -->
+      <span class="ministriere-ph">ministère de la culture</span>
+    </div>
+  </aside>
+</section>
+{{ end }}

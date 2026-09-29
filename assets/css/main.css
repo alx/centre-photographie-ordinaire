@@ -1,0 +1,366 @@
+/* ============================================================
+   centre de la photographie ordinaire — charte graphique web
+   fond : #2A2E33 · texte : #F5EFE4 · jaune #FAB617 · orange #F37120
+   titres contenu : DINdong minuscules · titres section : DIN 1451 maj
+   corps : Spectral
+   ============================================================ */
+
+:root {
+  --bg: #2A2E33;
+  --bg-dark: #14171A;
+  --ink: #F5EFE4;
+  --ink-soft: #F0E9DC;
+  --yellow: #FAB617;
+  --orange: #F37120;
+  --blue: #1B4F8C;
+  /* --vert: #1C5F54; réservé, à éviter selon la charte */
+  --font-title: "DINdong", "DIN 1451 fette Breitschrift 1936",
+                "Haettenschweiler", "Arial Narrow", sans-serif;
+  --font-body: "Spectral", Georgia, serif;
+  --cadre-fin: 1px solid var(--ink);
+  --transition: 0.2s ease;
+  --marge-lg: 4rem;
+  --marge-md: 2rem;
+  --marge-sm: 1rem;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  font-weight: 400;
+  text-transform: none;           /* DINdong minuscules (charte) */
+  line-height: 1.15;
+  margin: 0 0 var(--marge-sm);
+}
+h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); }
+h2 { font-size: clamp(1.25rem, 3vw, 1.7rem); margin-top: var(--marge-md); }
+.titre-maj {
+  font-family: var(--font-title);
+  text-transform: uppercase;      /* DIN 1451 majuscules (charte) */
+  letter-spacing: 0.04em;
+  font-size: 1.15rem;
+}
+
+a { color: var(--yellow); text-decoration: none; }
+a:hover { color: var(--orange); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- header ---------- */
+.site-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "logo titres menu" "nav nav nav";
+  gap: 0.75rem var(--marge-md);
+  align-items: center;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 0;
+}
+.logo-lien { grid-area: logo; display: block; }
+.logo { width: 76px; height: 76px; display: block; transition: transform var(--transition); }
+.logo-lien:hover .logo { transform: scale(1.04); }
+
+.header-titres { grid-area: titres; }
+.site-titre {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: clamp(1.15rem, 2.6vw, 1.9rem);
+  color: var(--ink);
+  line-height: 1.1;
+}
+.site-lieu {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.menu-toggle {
+  grid-area: menu;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px; height: 22px;
+  background: transparent; border: none; cursor: pointer; padding: 0;
+}
+.menu-toggle span { display: block; height: 2px; background: var(--ink); transition: var(--transition); }
+
+.nav {
+  grid-area: nav;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.4rem;
+  padding-bottom: 0.75rem;
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+}
+.nav a {
+  color: var(--ink);
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+.nav a:hover { color: var(--yellow); border-bottom-color: var(--yellow); }
+.nav a[aria-current="page"] { color: var(--yellow); border-bottom-color: var(--yellow); }
+
+.barre-separation {
+  height: 1.5px;
+  background: var(--ink);
+  opacity: 0.9;
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+/* ---------- layout ---------- */
+.main {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: var(--marge-md) 1.5rem 3rem;
+  min-height: 65vh;
+}
+.content { max-width: 48rem; }
+.content p, .content li { font-size: 1.05rem; }
+
+/* ---------- accueil éditorial ---------- */
+.home-grid-main {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 2fr);
+  gap: var(--marge-lg);
+  align-items: start;
+  padding-top: var(--marge-lg);
+}
+.home-texte { display: flex; flex-direction: column; gap: 1.1rem; font-size: 1.05rem; line-height: 1.7; }
+.home-texte p { margin: 0; }
+.home-cta {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+}
+.home-image { margin: 0; }
+.home-image img {
+  width: 100%; height: auto; display: block;
+  /* pas de cadre : l'image se détache sur le fond sombre */
+}
+
+/* bandeau bicentenaire */
+.bandeau {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--marge-md);
+  border-top: var(--cadre-fin);
+  margin-top: var(--marge-lg);
+  padding-top: var(--marge-md);
+}
+.badge { width: 96px; height: 96px; }
+.mention-bicentenaire { margin: 0; font-size: 0.95rem; max-width: 60ch; }
+.logo-ministere { display: flex; align-items: center; }
+.ministriere-ph {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  opacity: 0.5;
+  border: 1px dashed var(--ink);
+  padding: 0.5rem 0.9rem;
+}
+
+/* ---------- collection : grille ---------- */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: var(--marge-md);
+  margin-top: var(--marge-md);
+}
+.tile { display: block; }
+
+/* ---------- système d'unification des images (charte) ----------
+   fond #14171A + cadre fin #F5EFE4 + ratio préservé, jamais de recadrage */
+.photo-cadre {
+  display: block;
+  padding: var(--marge-sm);
+  background: var(--bg-dark);
+  border: var(--cadre-fin);
+  transition: border-color var(--transition);
+}
+.photo-cadre img {
+  width: 100%; height: auto; display: block;
+  object-fit: contain;
+  background: var(--bg-dark);
+}
+.tile:hover .photo-cadre { border-color: var(--yellow); }
+.tile img { aspect-ratio: 4 / 3; object-fit: cover; }  /* grille : vignettes régulières */
+
+/* ---------- sommaires et cartes ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--marge-md);
+  margin-top: var(--marge-md);
+}
+.card {
+  display: block;
+  padding: var(--marge-md);
+  background: var(--bg-dark);
+  border: var(--cadre-fin);
+  transition: border-color var(--transition);
+}
+.card:hover { border-color: var(--yellow); }
+.card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.card p { margin: 0; font-size: 0.95rem; opacity: 0.85; }
+.series-cta { margin-top: var(--marge-lg); font-size: 1.05rem; }
+
+/* ---------- actualité / listes ---------- */
+.list-page .entries { list-style: none; padding: 0; }
+.list-page .entries li { border-bottom: 1px dotted var(--bg-dark); padding: 0.5rem 0; }
+.list-page time { color: var(--orange); font-family: var(--font-title); }
+
+/* ---------- séries ---------- */
+.series-count { font-style: italic; opacity: 0.8; }
+.series-list {
+  list-style: none; padding: 0;
+  columns: 3; column-gap: 2rem;
+}
+.series-list li { break-inside: avoid; padding: 0.15rem 0; }
+.series-list a { color: var(--ink); }
+.series-list a:hover { color: var(--yellow); }
+
+/* vignettes éparpillées (positions stables par série, calculées en JS) */
+.scatter {
+  position: relative;
+  height: 78vh;
+  min-height: 420px;
+  margin-top: var(--marge-md);
+  border-top: 1px dotted var(--bg-dark);
+}
+.scatter img {
+  position: absolute;
+  width: 27%;
+  max-width: 340px;
+  min-width: 130px;
+  border: var(--cadre-fin);
+  background: var(--bg-dark);
+  padding: 5px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  cursor: zoom-in;
+}
+.scatter img:hover { border-color: var(--yellow); }
+
+/* ---------- contact ---------- */
+.contact-form { display: grid; gap: 0.9rem; max-width: 34rem; }
+.contact-form label { font-family: var(--font-title); letter-spacing: 0.04em; font-size: 0.95rem; }
+.contact-form input, .contact-form textarea {
+  background: var(--bg-dark);
+  border: 1px solid var(--ink-soft);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.5rem 0.6rem;
+}
+.contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--yellow); border-color: transparent; }
+.contact-form button {
+  justify-self: start;
+  font-family: var(--font-title);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--bg-dark);
+  background: var(--yellow);
+  border: none;
+  padding: 0.6rem 1.6rem;
+  cursor: pointer;
+}
+.contact-form button:hover { background: var(--orange); color: var(--ink); }
+.hp-field { position: absolute; left: -9999px; }
+
+/* ---------- footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--bg-dark);
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--marge-md) var(--marge-lg);
+  margin-bottom: 1rem;
+}
+.footer-id { line-height: 1.5; }
+.footer-id span { font-size: 0.8rem; opacity: 0.7; }
+.footer-sitemap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.25rem 1.5rem;
+  align-content: start;
+  text-align: left;
+}
+.footer-sitemap .titre-maj {
+  font-size: 0.75rem;
+  margin: 0.4rem 0 0.2rem;
+  color: var(--yellow);
+}
+.footer-sitemap a { display: block; color: var(--ink-soft); }
+.footer-sitemap a:hover { color: var(--yellow); }
+.site-footer > p { margin: 0.25rem 0; }
+.footer-links a { margin-right: 1rem; color: var(--ink-soft); }
+.footer-links a:hover { color: var(--yellow); }
+.footer-fine { font-size: 0.75rem; opacity: 0.55; }
+
+/* ---------- lightbox ---------- */
+.lightbox {
+  position: fixed; inset: 0;
+  background: rgba(20, 23, 26, 0.94);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 92vw;
+  max-height: 92vh;
+  background: var(--bg-dark);
+  border: var(--cadre-fin);
+  padding: var(--marge-sm);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .site-header {
+    grid-template-areas: "logo titres menu" "nav nav nav";
+    padding-top: 0.9rem;
+  }
+  .logo { width: 56px; height: 56px; }
+  .menu-toggle { display: flex; }
+  .nav { display: none; flex-direction: column; gap: 0.4rem; }
+  .nav.open { display: flex; }
+  .home-grid-main { grid-template-columns: 1fr; gap: var(--marge-md); padding-top: var(--marge-md); }
+  .home-image { order: -1; }
+  .bandeau { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  .series-list { columns: 2; }
+}
+@media (max-width: 600px) {
+  :root { --marge-lg: 1.5rem; --marge-md: 1rem; }
+  .main { padding-left: 1rem; padding-right: 1rem; }
+  .series-list { columns: 1; }
+}
