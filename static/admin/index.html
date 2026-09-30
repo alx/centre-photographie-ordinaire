@@ -2,11 +2,14 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
+  <meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin — Centre de la Photographie Ordinaire</title>
 </head>
 <body>
-  <!-- Decap CMS (successor of Netlify CMS) -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <!-- Sveltia CMS (successeur de Netlify/Decap CMS).
+       Un seul <script>, pas de <link> CSS, pas de type="module" :
+       tout le style est bundlé dans le JS. -->
+  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
 </body>
 </html>
