@@ -10,10 +10,21 @@ if (menuToggle) {
   });
 }
 
+/* ---------- visionneuse GLightbox ---------- */
+/* Le fichier vendor définit la classe GLightbox (pas d'auto-init) : on la
+   lance explicitement sur les liens .glightbox. data-gallery regroupe les
+   photos de la même galerie : précédent/suivant, flèches clavier, légendes. */
+if (typeof GLightbox === 'function') {
+  new GLightbox('.glightbox', {
+    skin: 'clean',
+    loop: false,
+    keyboardNavigation: true,
+    touchNavigation: true,
+    effect: 'zoom'
+  });
+}
+
 /* ---------- accueil : mélanger la grille à chaque visite ---------- */
-/* la visionneuse est assurée par GLightbox (vendor/glightbox), chargé en
-   baseof.html ; il se branche sur les liens .glightbox (data-gallery regroupe
-   les photos de la même galerie : précédent/suivant, clavier, légendes). */
 (function () {
   const grid = document.querySelector('.home-grid');
   if (!grid) return;
