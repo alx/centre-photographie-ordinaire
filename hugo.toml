@@ -22,29 +22,29 @@ hasCJKLanguage = false
 
 [[menu.main]]
   name = "accueil"
-  page = "/"
+  url = "/"
   weight = 10
 [[menu.main]]
   name = "collection"
-  page = "/collection/"
+  url = "/collection/"
   weight = 20
 [[menu.main]]
   name = "actualité"
-  page = "/actualite/"
+  url = "/actualite/"
   weight = 30
 [[menu.main]]
   name = "le centre"
-  page = "/le-centre/"
+  url = "/le-centre/"
   weight = 40
 [[menu.main]]
   name = "soutenir"
-  page = "/soutenir/"
+  url = "/soutenir/"
   weight = 50
 [[menu.main]]
   name = "boutique"
-  page = "/boutique/"
+  url = "/boutique/"
   weight = 60
 [[menu.main]]
   name = "contact"
-  page = "/contact/"
+  url = "/contact/"
   weight = 70
