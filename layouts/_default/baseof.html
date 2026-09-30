@@ -16,14 +16,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | relURL }}">
   <script>
-    // Redirige les liens Netlify Identity reçus par e-mail (invitation, reset
-    // de mot de passe, confirmation) : le token voyage dans le hash de l'URL et
-    // n'est traité QUE par le CMS (/admin/) ou le gestionnaire /.netlify/identity.
-    // Sans ce script, le lien tombe sur la page d'accueil qui ignore le token.
+    // Netlify Identity : les e-mails (invitation, reset, confirmation) pointent
+    // sur le site avec le token dans le HASH (#invite_token=… etc.). Seul le
+    // widget netlify-identity sait consommer ces tokens : à son chargement il
+    // lit le hash, vérifie le token et ouvre d'office le formulaire adapté
+    // (mot de passe pour une invitation, reset pour recovery…). La page
+    // d'accueil du site ne le charge pas nativement → on l'injecte ici.
     (function () {
       var h = location.hash || '';
-      if (/#(invite_token|recovery_token|confirmation_token|signup_token|password_token)=/.test(h)) {
-        location.replace(location.origin + '/admin/' + h);
+      if (/#(confirmation|invite|recovery|email_change)_token=/.test(h)) {
+        var s = document.createElement('script');
+        s.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+        document.head.appendChild(s);
       }
     })();
   </script>
