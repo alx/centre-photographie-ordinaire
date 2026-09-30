@@ -5,7 +5,7 @@
   <div class="home-grid">
     {{ $photos := .Site.Data.photos }}
     {{ range $photos }}
-    <a class="tile" href="{{ .src }}" data-lightbox>
+    <a class="tile glightbox" href="{{ .src }}" data-gallery="collection" title="{{ .alt }}">
       <span class="photo-cadre">
         <img src="{{ .src }}" alt="{{ .alt }}" loading="lazy">
       </span>

@@ -250,18 +250,25 @@ a:hover { color: var(--orange); }
   margin-top: var(--marge-md);
   border-top: 1px dotted var(--bg-dark);
 }
-.scatter img {
+/* chaque vignette est un lien .scatter-tile (positionné) qui ouvre GLightbox */
+.scatter .scatter-tile {
   position: absolute;
+  display: block;
   width: 27%;
   max-width: 340px;
   min-width: 130px;
+  cursor: zoom-in;
+}
+.scatter .scatter-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
   border: var(--cadre-fin);
   background: var(--bg-dark);
   padding: 5px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
-  cursor: zoom-in;
 }
-.scatter img:hover { border-color: var(--yellow); }
+.scatter .scatter-tile:hover img { border-color: var(--yellow); }
 
 /* ---------- contact ---------- */
 .contact-form { display: grid; gap: 0.9rem; max-width: 34rem; }
@@ -325,24 +332,14 @@ a:hover { color: var(--orange); }
 .footer-links a:hover { color: var(--yellow); }
 .footer-fine { font-size: 0.75rem; opacity: 0.55; }
 
-/* ---------- lightbox ---------- */
-.lightbox {
-  position: fixed; inset: 0;
-  background: rgba(20, 23, 26, 0.94);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  cursor: zoom-out;
-}
-.lightbox.open { display: flex; }
-.lightbox img {
-  max-width: 92vw;
-  max-height: 92vh;
-  background: var(--bg-dark);
+/* ---------- GLightbox — ajustements charte ---------- */
+.glightbox-container { background-color: rgba(20, 23, 26, 0.94); }
+.gslide-image img {
   border: var(--cadre-fin);
-  padding: var(--marge-sm);
+  padding: 5px;
+  background: var(--bg-dark);
 }
+.glightbox-desc { font-family: var(--font-body, Georgia, serif); }
 
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
