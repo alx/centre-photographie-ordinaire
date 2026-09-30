@@ -15,6 +15,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | relURL }}">
+  <script>
+    // Redirige les liens Netlify Identity reçus par e-mail (invitation, reset
+    // de mot de passe, confirmation) : le token voyage dans le hash de l'URL et
+    // n'est traité QUE par le CMS (/admin/) ou le gestionnaire /.netlify/identity.
+    // Sans ce script, le lien tombe sur la page d'accueil qui ignore le token.
+    (function () {
+      var h = location.hash || '';
+      if (/#(invite_token|recovery_token|confirmation_token|signup_token|password_token)=/.test(h)) {
+        location.replace(location.origin + '/admin/' + h);
+      }
+    })();
+  </script>
   {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 </head>
