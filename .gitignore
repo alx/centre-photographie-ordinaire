@@ -13,3 +13,4 @@ hugo-server.log
 # Local Netlify folder
 .netlify
 docs/
+.env
