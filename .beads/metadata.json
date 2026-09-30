@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "communDesMortels",
+  "project_id": "1a071778-53f6-4dbd-a57a-4c813d014974"
+}
