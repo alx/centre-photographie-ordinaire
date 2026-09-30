@@ -1,13 +1,15 @@
 # Decap CMS configuration
 # Docs: https://decapcms.org/docs/configuration/
 
-# Backend : git-gateway = déploiement 100 % statique (recommandé avec Netlify).
-# Authentification : email/password Netlify Identity (/admin/#/ → /.netlify/identity).
-# Commits automatiques dans le repo GitHub.
+# Backend : GitHub direct (plus fiable que git-gateway).
+# Authentification : à la connexion, saisir un GitHub Personal Access Token
+# (classic) avec la scope `repo` — le repo est privé. Le token reste dans le
+# navigateur (localStorage) et N'EST PAS écrit dans ce fichier.
+# ⚠️ Branch master (pas main !). Commits poussés sur la branche → Netlify redéploie.
 backend:
-  name: git-gateway
-  site-repo: alx/communDesMortels
-  branch: main
+  name: github
+  repo: alx/communDesMortels
+  branch: master
 
 # Site public (affiché dans l'admin)
 site_url: https://centredelaphotographieordinaire.netlify.app
