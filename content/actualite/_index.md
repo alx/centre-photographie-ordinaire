@@ -7,4 +7,4 @@ Les expositions en cours et les ateliers du centre.
 
 ---
 
-[expositions passées — archive](/expositions-passees/)
+[expositions passées — archive(../expositions-passees/)

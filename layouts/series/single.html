@@ -8,8 +8,8 @@
     {{ $n := 0 }}
     {{ range .Params.images }}
     {{ $n = add $n 1 }}
-    <a class="scatter-tile glightbox" href="{{ . }}" data-gallery="serie-{{ $seed }}" title="{{ $.Title }} — {{ add $n 0 }}/{{ len $.Params.images }}">
-      <img src="{{ . }}" alt="{{ $.Title }} — photographie {{ $n }}" loading="lazy">
+    <a class="scatter-tile glightbox" href="{{ . | relURL }}" data-gallery="serie-{{ $seed }}" title="{{ $.Title }} — {{ add $n 0 }}/{{ len $.Params.images }}">
+      <img src="{{ . | relURL }}" alt="{{ $.Title }} — photographie {{ $n }}" loading="lazy">
     </a>
     {{ end }}
   </div>

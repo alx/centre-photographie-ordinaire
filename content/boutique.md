@@ -15,4 +15,4 @@ La boutique est en cours d'ouverture.
 
 *Les commandes ouvriront sur un paiement en ligne sécurisé (aucune donnée bancaire ne transite par ce site). En attendant, vous pouvez écrire au centre :*
 
-[<strong>écrire au centre</strong>](/contact/)
+[<strong>écrire au centre</strong>(contact/)

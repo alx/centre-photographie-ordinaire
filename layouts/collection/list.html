@@ -5,16 +5,16 @@
   <div class="home-grid">
     {{ $photos := .Site.Data.photos }}
     {{ range $photos }}
-    <a class="tile glightbox" href="{{ .src }}" data-gallery="collection" title="{{ .alt }}">
+    <a class="tile glightbox" href="{{ .src | relURL }}" data-gallery="collection" title="{{ .alt }}">
       <span class="photo-cadre">
-        <img src="{{ .src }}" alt="{{ .alt }}" loading="lazy">
+        <img src="{{ .src | relURL }}" alt="{{ .alt }}" loading="lazy">
       </span>
     </a>
     {{ end }}
   </div>
   <p class="series-cta">
     <span class="titre-maj">les 400 thèmes</span> —
-    <a href="/series/">parcourir la collection par série</a>
+    <a href='{{ relURL "series/" }}'>parcourir la collection par série</a>
   </p>
 </section>
 {{ end }}
