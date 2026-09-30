@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | relURL }}">
   <link rel="stylesheet" href="/vendor/glightbox/glightbox.min.css">
+  <link rel="stylesheet" href="/vendor/fonts/fonts.css">
   <script>
     // Netlify Identity : les e-mails (invitation, reset, confirmation) pointent
     // sur le site avec le token dans le HASH (#invite_token=… etc.). Seul le
@@ -42,6 +43,7 @@
   </main>
   {{ block "footer" . }}{{ partial "footer.html" . }}{{ end }}
   <script defer src="/vendor/glightbox/glightbox.min.js"></script>
-  <script defer src="{{ resources.Get "js/app.js" | minify | fingerprint | relURL }}"></script>
+  {{ $js := resources.Get "js/app.js" | minify | fingerprint }}
+  <script defer src="{{ $js.RelPermalink }}"></script>
 </body>
 </html>

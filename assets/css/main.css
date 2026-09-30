@@ -14,8 +14,11 @@
   --orange: #F37120;
   --blue: #1B4F8C;
   /* --vert: #1C5F54; réservé, à éviter selon la charte */
-  --font-title: "DINdong", "DIN 1451 fette Breitschrift 1936",
-                "Haettenschweiler", "Arial Narrow", sans-serif;
+  /* Charte : titre contenu = DINdong, titre section = DIN 1451 (polices
+     Dinamo, non distribuables en web) → équivalents libres (OFL) hébergés
+     localement : Barlow Condensed (≈ DINdong) et Oswald (≈ DIN 1451). */
+  --font-title: "Barlow Condensed", "Haettenschweiler", "Arial Narrow", sans-serif;
+  --font-titre-maj: "Oswald", "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-body: "Spectral", Georgia, serif;
   --cadre-fin: 1px solid var(--ink);
   --transition: 0.2s ease;
@@ -38,16 +41,18 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-title);
-  font-weight: 400;
-  text-transform: none;           /* DINdong minuscules (charte) */
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;           /* DINdong minuscules (charte) → Barlow Condensed */
   line-height: 1.15;
   margin: 0 0 var(--marge-sm);
 }
 h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); }
 h2 { font-size: clamp(1.25rem, 3vw, 1.7rem); margin-top: var(--marge-md); }
 .titre-maj {
-  font-family: var(--font-title);
-  text-transform: uppercase;      /* DIN 1451 majuscules (charte) */
+  font-family: var(--font-titre-maj);
+  font-weight: 600;
+  text-transform: uppercase;      /* DIN 1451 majuscules (charte) → Oswald */
   letter-spacing: 0.04em;
   font-size: 1.15rem;
 }
