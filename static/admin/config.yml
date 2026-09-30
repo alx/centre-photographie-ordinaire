@@ -4,8 +4,10 @@
 # Backend : git-gateway = déploiement 100 % statique (recommandé avec Netlify).
 # Authentification : email/password Netlify Identity (/admin/#/ → /.netlify/identity).
 # Commits automatiques dans le repo GitHub.
-backend: git-gateway
-branch: main
+backend:
+  name: git-gateway
+  site-repo: alx/communDesMortels
+  branch: main
 
 # Site public (affiché dans l'admin)
 site_url: https://centredelaphotographieordinaire.netlify.app
@@ -113,35 +115,88 @@ collections:
   - name: pages
     label: Pages
     label_singular: Page
-    fields:
-      - name: title
-        label: Titre
-        widget: string
-      - name: image
-        label: Image
-        widget: image
-        media_library:
-          choose_image: true
-        required: false
-      - name: body
-        label: Contenu
-        widget: markdown
     files:
       - name: accueil
         label: Accueil
         file: content/_index.md
+        fields:
+          - name: title
+            label: Titre
+            widget: string
+          - name: body
+            label: Contenu
+            widget: markdown
       - name: histoire
         label: "La collection, son histoire"
         file: content/histoire.md
+        fields:
+          - name: title
+            label: Titre
+            widget: string
+          - name: image
+            label: Image
+            widget: image
+            media_library:
+              choose_image: true
+            required: false
+          - name: body
+            label: Contenu
+            widget: markdown
       - name: centre
         label: "Le centre"
         file: content/le-centre.md
+        fields:
+          - name: title
+            label: Titre
+            widget: string
+          - name: image
+            label: Image
+            widget: image
+            media_library:
+              choose_image: true
+            required: false
+          - name: body
+            label: Contenu
+            widget: markdown
       - name: soutenir
         label: "Soutenir le centre"
         file: content/soutenir.md
+        fields:
+          - name: title
+            label: Titre
+            widget: string
+          - name: image
+            label: Image
+            widget: image
+            media_library:
+              choose_image: true
+            required: false
+          - name: body
+            label: Contenu
+            widget: markdown
       - name: collecte
         label: "La collecte"
         file: content/collecte.md
+        fields:
+          - name: title
+            label: Titre
+            widget: string
+          - name: image
+            label: Image
+            widget: image
+            media_library:
+              choose_image: true
+            required: false
+          - name: body
+            label: Contenu
+            widget: markdown
       - name: recherche
         label: "Recherche et édition"
         file: content/recherche-et-edition.md
+        fields:
+          - name: title
+            label: Titre
+            widget: string
+          - name: body
+            label: Contenu
+            widget: markdown
