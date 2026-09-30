@@ -14,3 +14,4 @@ hugo-server.log
 .netlify
 docs/
 .env
+docs

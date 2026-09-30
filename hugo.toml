@@ -41,10 +41,6 @@ hasCJKLanguage = false
   url = "/soutenir/"
   weight = 50
 [[menu.main]]
-  name = "boutique"
-  url = "/boutique/"
-  weight = 60
-[[menu.main]]
   name = "contact"
   url = "/contact/"
   weight = 70
