@@ -1,24 +1,18 @@
-# Decap CMS configuration
-# Docs: https://decapcms.org/docs/configuration/
-
-# Backend : git-gateway (100 % statique, aucun token dans les fichiers publics).
-# Connexion : bouton « Login » → Netlify Identity (e-mail/mot de passe, créé via
-# app.netlify.com → projet → Settings → Identity → Add user).
-# ⚠️ Netlify UI → Identity → « Site URL » : mettre
-#    https://centredelaphotographieordinaire.netlify.app/admin/#/
-#    (sinon les e-mails invite/reset renvoyent à l'accueil, pas au CMS).
-# Commits via le gateway Netlify → branche master → auto-redeploy.
+# Sveltia CMS configuration (successeur de Netlify/Decap CMS)
+# Docs: https://sveltiacms.app/en/docs/start
+#
+# Backend : github. En LOCAL, aucun auth n'est requis : le « local workflow »
+# (File System Access API, navigateur Chromium) édite directement les fichiers
+# du projet quand on clique « Work with Local Repository ». Le nom de repo sert
+# alors uniquement à partitionner l'IndexedDB du navigateur (peut être fictif).
+# Pour l'édition DISTANTE (bead ej9) : on ajoutera l'auth GitHub / Open Authoring.
 backend:
-  name: git-gateway
-  site-repo: alx/centre-photographie-ordinaire
-  branch: master
+  name: github
+  repo: alx/centre-photographie-ordinaire
 
-# Site public (affiché dans l'admin)
-site_url: https://centredelaphotographieordinaire.netlify.app
-display_url: https://centredelaphotographieordinaire.netlify.app
-
-# Pas de backend local
-local_backend: false
+# Site public (affiché dans l'admin, pendant la phase de test)
+site_url: https://alx.github.io/centre-photographie-ordinaire/
+display_url: https://alx.github.io/centre-photographie-ordinaire/
 
 # Dossier des images uploadées depuis l'admin
 media_folder: "/static/uploads"
@@ -65,9 +59,15 @@ collections:
     folder: content/series
     create: true
     format: frontmatter
-    slug: "serie-{{ fields.title | slugify }}/index"
-    editor:
-      preview: false
+    # Chaque série est un bundle feuille : content/series/serie-xxx/index.md.
+    # → collection IMBRICÉE (nested), pas un slash-slug (interdit en Sveltia).
+    nested:
+      subfolders: true
+      depth: 2
+    meta:
+      path:
+        index_file: index
+    slug: "serie-{{ fields.title | slugify }}"
     fields:
       - name: title
         label: "Titre de la série"
