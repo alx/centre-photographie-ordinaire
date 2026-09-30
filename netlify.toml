@@ -1,8 +1,0 @@
-# Netlify build configuration — Centre de la Photographie Ordinaire
-# Build : Hugo étendu (images webp etc.), dernière version.
-build.command = "wget -q https://github.com/gohugoio/hugo/releases/download/v0.151.0/hugo_extended_0.151.0_linux-amd64.tar.gz -O /tmp/hugo.tar.gz && tar -xzf /tmp/hugo.tar.gz -C /tmp && /tmp/hugo --minify"
-build.publish = "public"
-
-# Pas d'env en build : le contenu est édité via Decap CMS (git-gateway).
-[build.environment]
-  HUGO_ENV = "production"
