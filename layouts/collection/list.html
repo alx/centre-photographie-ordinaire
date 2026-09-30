@@ -3,7 +3,7 @@
   <h1>collection — le commun des mortels</h1>
   {{ .Content }}
   <div class="home-grid">
-    {{ $photos := index (hugo.Data) "photos" }}
+    {{ $photos := .Site.Data.photos }}
     {{ range $photos }}
     <a class="tile" href="{{ .src }}" data-lightbox>
       <span class="photo-cadre">

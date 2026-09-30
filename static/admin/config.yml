@@ -1,0 +1,98 @@
+# Decap CMS configuration
+# Docs: https://decapcms.org/docs/configuration/
+
+# Backend : git-gateway = déploiement 100 % statique (recommandé avec Netlify).
+# L'authentification se fait via Netlify Identity (voir bd « Intégrer Decap CMS »).
+# À remplacer par 'github' + branch si le repo est pointé directement (plus fiable
+# que le git-gateway en production — voir la bd dédiée).
+backend: git-gateway
+branch: main
+
+# Site public (utile pour les liens « view site »)
+site_url: https://centredelaphotographieordinaire.fr
+display_url: https://centredelaphotographieordinaire.fr
+
+# Authentification : email + password de Netlify Identity
+local_backend: false
+enable_diff_callback: true
+hide_logo: true
+logo_url: /favicon.svg
+
+media_folder: "/static/uploads"
+public_folder: "/uploads"
+# Les images de la collection restent dans static/collection/ (gérées par script)
+
+collections:
+  # ——— Actualité ————————————————————————————————————————
+  - name: "actualite"
+    label: "Actualités"
+    label_singular: "Actualité"
+    description: "Expositions en cours, ateliers, vie du centre"
+    folder: "content/actualite"
+    create: true
+    slug: "{{ fields.title | slugify }}"
+    extensions: [".md"]
+    fields:
+      - { name: "title", label: "Titre" }
+      - { name: "date", label: "Date", widget: "datetime", format: "YYYY-MM-DD", default: "$(now)" }
+      - { name: "image", label: "Image", widget: "image", media_library: { choose_image: true }, required: false }
+      - { name: "body", label: "Contenu", widget: "markdown" }
+
+  # ——— Séries (400 thèmes) —————————————————————————————
+  # Chaque série = un dossier content/series/serie-xxx/index.md
+  # (pattern « files » : Decap crée le sous-dossier depuis le slug)
+  - name: "series"
+    label: "Séries (thèmes)"
+    label_singular: "Série"
+    description: "Les 400 thèmes de la collection — une fiche par thème, ~10 photos"
+    folder: "content/series"
+    create: true
+    format: "frontmatter"
+    slug: "serie-{{ fields.title | slugify }}/index"
+    editor:
+      preview: false
+    fields:
+      - { name: "title", label: "Titre de la série" }
+      - {
+          name: "images",
+          label: "Photos de la série (10 environ)",
+          widget: "list",
+          fields:
+            - { name: "src", label: "Chemin / URL de l'image", widget: "string" }
+            - { name: "alt", label: "Légende", widget: "string" }
+        }
+      - { name: "body", label: "Texte de la série", widget: "markdown" }
+
+  # ——— Expositions passées ————————————————————————————
+  - name: "expositions"
+    label: "Expositions passées"
+    label_singular: "Exposition"
+    folder: "content/expositions-passees"
+    create: true
+    slug: "{{ fields.title | slugify }}"
+    extensions: [".md"]
+    fields:
+      - { name: "title", label: "Titre de l'exposition" }
+      - { name: "date", label: "Date (début)", widget: "datetime", format: "YYYY-MM-DD", default: "$(now)" }
+      - { name: "lieu", label: "Lieu", widget: "string" }
+      - { name: "image", label: "Visuel", widget: "image", media_library: { choose_image: true }, required: false }
+      - { name: "body", label: "Texte", widget: "markdown", required: false }
+
+  # ——— Pages institutionnelles —————————————————————————
+  - name: "pages"
+    label: "Pages"
+    label_singular: "Page"
+    files:
+      - { name: "accueil", label: "Accueil", file: "content/_index.md" }
+      - { name: "histoire", label: "La collection, son histoire", file: "content/histoire.md" }
+      - { name: "centre", label: "Le centre", file: "content/le-centre.md" }
+      - { name: "soutenir", label: "Soutenir le centre", file: "content/soutenir.md" }
+      - { name: "collecte", label: "La collecte", file: "content/collecte.md" }
+      - { name: "recherche", label: "Recherche et édition", file: "content/recherche-et-edition.md" }
+    fields:
+      - { name: "title", label: "Titre", widget: "string" }
+      - { name: "image", label: "Image", widget: "image", media_library: { choose_image: true }, required: false }
+      - { name: "body", label: "Contenu", widget: "markdown" }
+
+# Locale : français
+locale: "fr"

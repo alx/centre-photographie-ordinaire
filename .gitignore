@@ -9,3 +9,6 @@ hugo-server.log
 *.db
 .beads-credential-key
 .beads/proxieddb/
+
+# Local Netlify folder
+.netlify
